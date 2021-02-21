@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ public class RecyclerAdapterMain extends RecyclerView.Adapter<RecyclerAdapterMai
     private ArrayList<String> arrayList = new ArrayList<>();
     private Context context;
     private TextView textView;
+    private Button button;
 
     public RecyclerAdapterMain(Context context, ArrayList<String> arrayList) {
         this.arrayList = arrayList;
@@ -45,7 +47,18 @@ public class RecyclerAdapterMain extends RecyclerView.Adapter<RecyclerAdapterMai
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.activity_main_recyclerview_insidelayout_textView);
+            button = itemView.findViewById(R.id.activity_main_recyclerview_insidelayout_button);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println("Teste botão:" + textView.getText().toString());
+                }
+            });
+
         }
+
+
 
         public void bindView(String s) {
             textView.setText(s);

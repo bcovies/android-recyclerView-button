@@ -1,6 +1,8 @@
 package com.example.android_recyclerview_button;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +38,6 @@ public class RecyclerAdapterMain extends RecyclerView.Adapter<RecyclerAdapterMai
     }
 
 
-
     @Override
     public int getItemCount() {
         return arrayList.size();
@@ -54,11 +55,20 @@ public class RecyclerAdapterMain extends RecyclerView.Adapter<RecyclerAdapterMai
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println("Teste botão:" + textView.getText().toString());
+
+                    SharedPreferences.Editor editor = context.getSharedPreferences("PASSARTEXTOVIEW", Context.MODE_PRIVATE).edit();
+
+                    String textoDaRow = textView.getText().toString();
+
+                    editor.putString("STRINGROW", textoDaRow);
+                    editor.commit();
+
+                    context.startActivity(new Intent(context, ItemActivity.class));
                 }
             });
 
         }
+
         public void bindView(String s) {
             textView.setText(s);
         }

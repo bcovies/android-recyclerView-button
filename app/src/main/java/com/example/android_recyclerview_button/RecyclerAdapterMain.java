@@ -16,8 +16,7 @@ public class RecyclerAdapterMain extends RecyclerView.Adapter<RecyclerAdapterMai
 
     private ArrayList<String> arrayList = new ArrayList<>();
     private Context context;
-    private TextView textView;
-    private Button button;
+
 
     public RecyclerAdapterMain(Context context, ArrayList<String> arrayList) {
         this.arrayList = arrayList;
@@ -44,6 +43,9 @@ public class RecyclerAdapterMain extends RecyclerView.Adapter<RecyclerAdapterMai
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView textView;
+        private Button button;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.activity_main_recyclerview_insidelayout_textView);
@@ -57,9 +59,6 @@ public class RecyclerAdapterMain extends RecyclerView.Adapter<RecyclerAdapterMai
             });
 
         }
-
-
-
         public void bindView(String s) {
             textView.setText(s);
         }
